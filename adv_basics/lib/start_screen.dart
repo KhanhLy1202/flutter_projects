@@ -45,7 +45,7 @@ class StartScreen extends StatelessWidget {
               onPressed: startQuiz,
               style: OutlinedButton.styleFrom(
                   foregroundColor: Colors.white,
-                  backgroundColor: Color.fromARGB(255, 22, 18, 134),
+                  backgroundColor: Color.fromARGB(255, 63, 11, 131),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(
                       Radius.circular(4),
