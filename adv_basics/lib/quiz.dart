@@ -1,14 +1,15 @@
+import 'package:flutter/material.dart';
+
+import 'package:adv_basics/start_screen.dart';
+import 'package:adv_basics/questions_screen.dart';
 import 'package:adv_basics/data/questions.dart';
 import 'package:adv_basics/results_screen.dart';
-import 'package:flutter/material.dart';
-import 'package:adv_basics/questions_screen.dart';
-import 'package:adv_basics/start_screen.dart';
 
 class Quiz extends StatefulWidget {
   const Quiz({super.key});
 
   @override
-  State<StatefulWidget> createState() {
+  State<Quiz> createState() {
     return _QuizState();
   }
 }
@@ -17,9 +18,9 @@ class _QuizState extends State<Quiz> {
   List<String> selectedAnswers = [];
   var activeScreen = 'start-screen';
 
-  void swicthScreen() {
+  void switchScreen() {
     setState(() {
-      activeScreen = 'question-screen';
+      activeScreen = 'questions-screen';
     });
   }
 
@@ -28,7 +29,7 @@ class _QuizState extends State<Quiz> {
 
     if (selectedAnswers.length == questions.length) {
       setState(() {
-        activeScreen = 'question-screen';
+        activeScreen = 'results-screen';
       });
     }
   }
@@ -36,17 +37,17 @@ class _QuizState extends State<Quiz> {
   void restartQuiz() {
     setState(() {
       selectedAnswers = [];
-      activeScreen = 'question-screen';
+      activeScreen = 'questions-screen';
     });
   }
 
   @override
-  Widget build(BuildContext context) {
-    Widget screenWidget = StartScreen(swicthScreen);
+  Widget build(context) {
+    Widget screenWidget = StartScreen(switchScreen);
 
-    if (activeScreen == 'question-screen') {
+    if (activeScreen == 'questions-screen') {
       screenWidget = QuestionsScreen(
-        onSelectAnswers: chooseAnswer,
+        onSelectAnswer: chooseAnswer,
       );
     }
 
@@ -60,11 +61,11 @@ class _QuizState extends State<Quiz> {
     return MaterialApp(
       home: Scaffold(
         body: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                const Color.fromARGB(255, 22, 18, 134),
-                const Color.fromARGB(255, 33, 28, 180),
+                Color.fromARGB(255, 33, 1, 95),
+                Color.fromARGB(255, 33, 1, 95),
               ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,

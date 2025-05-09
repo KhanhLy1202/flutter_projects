@@ -18,7 +18,7 @@ class QuestionIdentifier extends StatelessWidget {
       height: 40,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: isCorrectAnswer ? Colors.pink : Colors.blue,
+        color: isCorrectAnswer ? Colors.blue : Colors.pink,
         borderRadius: BorderRadius.all(
           Radius.circular(100),
         ),
