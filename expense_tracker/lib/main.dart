@@ -1,18 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:expense_tracker/widgets/expenses.dart';
 
-final colorScheme = ColorScheme.fromSeed(
-  seedColor: Color(0xFF1B5B3A), // Màu chủ đạo
-  brightness: Brightness.light,
+var colorScheme = ColorScheme.fromSeed(
+  seedColor: Color.fromARGB(255, 96, 59, 181),
 );
+
+var darkColorScheme = ColorScheme.fromSeed(
+  seedColor: Color.fromARGB(255, 5, 99, 125),
+  brightness: Brightness.dark,
+);
+
 void main() {
   runApp(
     MaterialApp(
-      home: Expenses(),
+      darkTheme: ThemeData.dark().copyWith(
+        colorScheme: darkColorScheme,
+        cardTheme: CardTheme().copyWith(
+          color: darkColorScheme.secondaryContainer,
+          margin: EdgeInsets.symmetric(
+            horizontal: 16,
+            vertical: 8,
+          ),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: darkColorScheme.primaryContainer,
+            foregroundColor: darkColorScheme.onPrimaryContainer,
+          ),
+        ),
+      ),
       theme: ThemeData().copyWith(
+        colorScheme: colorScheme,
         appBarTheme: AppBarTheme().copyWith(
           backgroundColor: colorScheme.onPrimaryContainer,
-          foregroundColor: Colors.white,
+          foregroundColor: colorScheme.primaryContainer,
         ),
         cardTheme: CardTheme().copyWith(
           color: colorScheme.secondaryContainer,
@@ -29,10 +50,12 @@ void main() {
         textTheme: ThemeData().textTheme.copyWith(
               titleLarge: TextStyle(
                 fontWeight: FontWeight.normal,
-                color: colorScheme.onErrorContainer,
+                color: colorScheme.onSecondaryContainer,
+                fontSize: 16,
               ),
             ),
       ),
+      home: Expenses(),
     ),
   );
 }
